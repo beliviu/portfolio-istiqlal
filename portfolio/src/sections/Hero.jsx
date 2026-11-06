@@ -1,6 +1,6 @@
 import { motion, useReducedMotion } from "motion/react";
 import { useEffect, useState } from "react";
-import { FiArrowDown, FiArrowRight } from "react-icons/fi";
+import { FiArrowDown, FiDownload } from "react-icons/fi";
 import DraggableIdCard from "../components/DraggableIdCard.jsx";
 import TerminalAnimation from "../components/TerminalAnimation.jsx";
 
@@ -68,7 +68,7 @@ export default function Hero() {
           sistem keuangan, dan otomasi laporan yang tidak cuma jalan, tapi juga <strong>benar secara angka</strong>.
         </p>
         <div className="actions flex flex-wrap items-center gap-3">
-          <a className="btn btn-primary" href="#proyek">Lihat proyek <FiArrowRight className="arrow" aria-hidden="true" /></a>
+          <a className="btn btn-primary" href="/CV-Muhammad-Istiqlal.pdf" download="CV-Muhammad-Istiqlal.pdf">Download CV <FiDownload className="arrow" aria-hidden="true" /></a>
           <a className="btn btn-ghost" href="#kontak" data-magnetic>Hubungi saya <FiArrowDown className="arrow" aria-hidden="true" /></a>
         </div>
         <p className="hint">tip: tekan <kbd>Ctrl</kbd> + <kbd>K</kbd> untuk navigasi cepat</p>
