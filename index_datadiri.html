@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#0c0f0d">
+	<meta name="description" content="Portofolio Muhammad Istiqlal Fajar Sya'bani — programmer dan akuntan. Membangun software yang rapi, akurat, dan selalu balance.">
+	<title>Muhammad Istiqlal Fajar Sya'bani — Programmer & Accounting</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+	<style>
+		/* ================= TOKENS ================= */
+		:root {
+			--bg: #0c0f0d;
+			--bg-2: #111512;
+			--card: #151a16;
+			--card-2: #1a201b;
+			--line: #242b25;
+			--line-2: #2f3830;
+			--ink: #e8eee5;
+			--muted: #8b958c;
+			--accent: #d7f276;      /* teks aksen */
+			--hl: #d7f276;          /* blok highlight */
+			--hl-ink: #10140f;
+			--green: #5fd08b;
+			--red: #ff7c6b;
+			--amber: #f4c66a;
+			--blue: #7cb6ff;
+			--grid: rgb(255 255 255 / 3.2%);
+			--shadow: 0 30px 60px -20px rgb(0 0 0 / 55%);
+			--display: "Bricolage Grotesque", system-ui, sans-serif;
+			--body: "Geist", system-ui, sans-serif;
+			--mono: "JetBrains Mono", ui-monospace, monospace;
+			color-scheme: dark;
+		}
+
+		:root[data-theme="light"] {
+			--bg: #f3f2ec;
+			--bg-2: #ebe9e0;
+			--card: #fbfaf5;
+			--card-2: #f4f2ea;
+			--line: #dcd8cc;
+			--line-2: #cbc6b8;
+			--ink: #161a16;
+			--muted: #626b62;
+			--accent: #3f6d16;
+			--hl: #d7f276;
+			--hl-ink: #10140f;
+			--green: #1f8a4c;
+			--red: #c4412f;
+			--amber: #a86f00;
+			--blue: #2563c9;
+			--grid: rgb(0 0 0 / 4%);
+			--shadow: 0 30px 60px -25px rgb(40 40 20 / 25%);
+			color-scheme: light;
+		}
+
+		*, *::before, *::after { box-sizing: border-box; }
+		html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+		body {
+			min-width: 320px;
+			margin: 0;
+			font-family: var(--body);
+			color: var(--ink);
+			background-color: var(--bg);
+			background-image:
+				linear-gradient(var(--grid) 1px, transparent 1px),
+				linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+			background-size: 48px 48px;
+			-webkit-font-smoothing: antialiased;
+			transition: background-color 300ms ease, color 300ms ease;
+		}
+		a { color: inherit; text-decoration: none; }
+		button { font: inherit; color: inherit; cursor: pointer; }
+		h1, h2, h3, p { margin-top: 0; }
+		::selection { color: var(--hl-ink); background: var(--hl); }
+		:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+		.wrap { width: min(1180px, calc(100% - 64px)); margin: 0 auto; }
+		.mono { font-family: var(--mono); }
+
+		/* ================= HEADER ================= */
+		.header {
+			position: sticky; top: 0; z-index: 50;
+			border-bottom: 1px solid var(--line);
+			background: color-mix(in srgb, var(--bg) 82%, transparent);
+			backdrop-filter: blur(14px);
+		}
+		.nav { display: flex; min-height: 72px; align-items: center; justify-content: space-between; gap: 20px; }
+		.logo { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 13px; font-weight: 700; }
+		.logo-mark {
+			display: grid; place-items: center; width: 34px; height: 34px;
+			border-radius: 8px; background: var(--hl); color: var(--hl-ink);
+			font-size: 13px; font-weight: 700; transform: rotate(-6deg);
+			transition: transform 300ms cubic-bezier(.3,1.6,.5,1);
+		}
+		.logo:hover .logo-mark { transform: rotate(6deg) scale(1.06); }
+		.logo .dim { color: var(--muted); font-weight: 400; }
+
+		.nav-links { display: flex; gap: 30px; }
+		.nav-links a { font-family: var(--mono); font-size: 12px; color: var(--muted); transition: color 160ms; }
+		.nav-links a span { color: var(--accent); margin-right: 4px; }
+		.nav-links a:hover { color: var(--ink); }
+
+		.nav-tools { display: flex; align-items: center; gap: 8px; }
+		.icon-btn {
+			display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+			height: 38px; min-width: 38px; padding: 0 11px;
+			border: 1px solid var(--line-2); border-radius: 8px;
+			background: var(--card); font-family: var(--mono); font-size: 11px; color: var(--muted);
+			transition: border-color 160ms, color 160ms, transform 160ms;
+		}
+		.icon-btn:hover { border-color: var(--accent); color: var(--ink); transform: translateY(-1px); }
+		kbd {
+			padding: 2px 6px; border: 1px solid var(--line-2); border-bottom-width: 2px;
+			border-radius: 5px; background: var(--card-2); font-family: var(--mono); font-size: 10px; color: var(--ink);
+		}
+		.menu-toggle { display: none; }
+
+		/* ================= HERO ================= */
+		.hero {
+			display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center;
+			padding: 76px 0 70px;
+		}
+		.status {
+			display: inline-flex; align-items: center; gap: 10px; margin-bottom: 26px;
+			padding: 7px 13px 7px 10px; border: 1px solid var(--line-2); border-radius: 99px;
+			background: var(--card); font-family: var(--mono); font-size: 11px; color: var(--muted);
+		}
+		.pulse { position: relative; width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
+		.pulse::after {
+			content: ""; position: absolute; inset: -4px; border-radius: 50%;
+			border: 1px solid var(--green); animation: ping 1.8s ease-out infinite;
+		}
+		.hello { margin-bottom: 14px; font-family: var(--mono); font-size: 14px; color: var(--muted); }
+		.hello b { color: var(--ink); font-weight: 500; }
+
+		h1 {
+			margin-bottom: 24px;
+			font-family: var(--display); font-weight: 800;
+			font-size: clamp(44px, 6.2vw, 82px); line-height: 0.98; letter-spacing: -0.035em;
+		}
+		h1 em { font-style: normal; color: var(--accent); }
+		.hl-box { position: relative; display: inline-block; padding: 0 0.12em; color: var(--hl-ink); z-index: 0; }
+		.hl-box::before {
+			content: ""; position: absolute; inset: 0.08em 0 0.02em; z-index: -1;
+			background: var(--hl); border-radius: 6px; transform: rotate(-1.4deg) scaleX(0); transform-origin: left;
+			animation: swipe 700ms 700ms cubic-bezier(.7,0,.2,1) forwards;
+		}
+
+		.role-line {
+			margin-bottom: 20px; font-family: var(--mono); font-size: 14px; color: var(--muted);
+		}
+		.role-line .key { color: var(--blue); }
+		.role-line .val { color: var(--amber); }
+		.caret { display: inline-block; width: 8px; height: 1.05em; margin-left: 2px; vertical-align: -2px; background: var(--accent); animation: blink 1s steps(1) infinite; }
+
+		.hero-desc { max-width: 470px; margin-bottom: 32px; font-size: 16px; line-height: 1.75; color: var(--muted); }
+		.hero-desc strong { color: var(--ink); font-weight: 500; }
+
+		.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+		.btn {
+			display: inline-flex; align-items: center; gap: 10px; height: 50px; padding: 0 20px;
+			border: 1px solid var(--line-2); border-radius: 10px;
+			font-family: var(--mono); font-size: 13px; font-weight: 500;
+			transition: transform 180ms ease, box-shadow 180ms ease, background 180ms, border-color 180ms;
+		}
+		.btn:hover { transform: translateY(-3px); }
+		.btn-primary { border-color: var(--hl); background: var(--hl); color: var(--hl-ink); box-shadow: 0 0 0 0 var(--hl); }
+		.btn-primary:hover { box-shadow: 4px 4px 0 0 var(--ink); }
+		.btn-ghost { background: var(--card); }
+		.btn-ghost:hover { border-color: var(--accent); }
+		.btn .arrow { transition: transform 180ms; }
+		.btn:hover .arrow { transform: translateX(3px); }
+		.hint { margin-top: 22px; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+
+		/* Terminal */
+		.hero-visual { position: relative; }
+		.terminal {
+			position: relative; overflow: hidden;
+			border: 1px solid var(--line-2); border-radius: 14px;
+			background: var(--card); box-shadow: var(--shadow);
+			transform: rotate(1.2deg); transition: transform 500ms cubic-bezier(.2,.8,.2,1);
+		}
+		.hero-visual:hover .terminal { transform: rotate(0deg) translateY(-4px); }
+		.term-bar {
+			display: flex; align-items: center; gap: 7px; padding: 12px 14px;
+			border-bottom: 1px solid var(--line); background: var(--card-2);
+		}
+		.term-bar i { width: 11px; height: 11px; border-radius: 50%; background: var(--line-2); }
+		.term-bar i:nth-child(1) { background: #ff6159; }
+		.term-bar i:nth-child(2) { background: #ffbd2e; }
+		.term-bar i:nth-child(3) { background: #28c941; }
+		.term-bar span { margin-left: auto; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+		.term-body {
+			min-height: 300px; margin: 0; padding: 20px 20px 24px; overflow-x: auto;
+			font-family: var(--mono); font-size: 13px; line-height: 1.85; white-space: pre; color: var(--ink);
+		}
+		.term-body .ln { display: block; }
+		.term-body .ln::before { content: attr(data-n); display: inline-block; width: 26px; color: var(--line-2); user-select: none; }
+		.c-mut { color: var(--muted); }
+		.c-key { color: #c792ea; }
+		:root[data-theme="light"] .c-key { color: #8b3fbf; }
+		.c-str { color: var(--amber); }
+		.c-num { color: var(--blue); }
+		.c-fn { color: var(--green); }
+		.c-ok { color: var(--hl-ink); background: var(--hl); padding: 2px 6px; border-radius: 4px; }
+
+		.receipt-chip {
+			position: absolute; left: -26px; bottom: -28px; z-index: 2;
+			padding: 14px 16px 16px; width: 210px;
+			background: var(--ink); color: var(--bg);
+			font-family: var(--mono); font-size: 11px; line-height: 1.6;
+			transform: rotate(-4deg); box-shadow: var(--shadow);
+			animation: bob 5s ease-in-out infinite;
+			clip-path: polygon(0 0, 100% 0, 100% 92%, 92% 100%, 84% 92%, 76% 100%, 68% 92%, 60% 100%, 52% 92%, 44% 100%, 36% 92%, 28% 100%, 20% 92%, 12% 100%, 4% 92%, 0 100%);
+		}
+		.receipt-chip .row { display: flex; justify-content: space-between; }
+		.receipt-chip hr { border: 0; border-top: 1px dashed currentColor; opacity: .4; margin: 6px 0; }
+		.receipt-chip b { font-weight: 700; }
+		.portrait-frame {
+			position: absolute; right: -18px; bottom: -42px; z-index: 4;
+			width: 142px; aspect-ratio: 0.78; padding: 7px; overflow: hidden;
+			border: 1px solid var(--accent); border-radius: 11px;
+			background: var(--card-2); box-shadow: var(--shadow);
+			transform: rotate(4deg); transition: transform 240ms ease, border-color 240ms ease;
+		}
+		.portrait-frame:hover { transform: rotate(0) translateY(-4px); border-color: var(--hl); }
+		.portrait-placeholder {
+			display: flex; width: 100%; height: 100%; flex-direction: column;
+			align-items: center; justify-content: center; gap: 9px;
+			border: 1px dashed var(--line-2); border-radius: 6px;
+			background: radial-gradient(circle at 50% 40%, var(--card-2), var(--bg-2));
+			color: var(--muted); text-align: center; transition: opacity 220ms ease;
+		}
+		.portrait-placeholder::before {
+			width: 34px; height: 34px; border: 1px solid var(--accent); border-radius: 50%;
+			background: linear-gradient(var(--accent), var(--accent)) center 25px / 17px 1px no-repeat;
+			content: "";
+		}
+		.portrait-placeholder strong { color: var(--ink); font-family: var(--mono); font-size: 10px; font-weight: 500; }
+		.portrait-placeholder small { font-family: var(--mono); font-size: 8px; }
+		.portrait-image {
+			position: absolute; inset: 7px; z-index: 1;
+			width: calc(100% - 14px); height: calc(100% - 14px);
+			border-radius: 6px; object-fit: cover; object-position: center 35%;
+			opacity: 0; transition: opacity 240ms ease;
+		}
+		.portrait-frame.has-image .portrait-image { opacity: 1; }
+		.portrait-frame.has-image .portrait-placeholder { opacity: 0; }
+
+		.sticker {
+			position: absolute; top: -22px; right: -14px; z-index: 2;
+			display: grid; place-items: center; width: 92px; height: 92px;
+			border-radius: 50%; background: var(--hl); color: var(--hl-ink);
+			font-family: var(--mono); font-size: 10px; font-weight: 700; text-align: center; line-height: 1.25;
+			animation: spin 14s linear infinite;
+		}
+
+		/* ================= TICKER ================= */
+		.ticker {
+			overflow: hidden; border-block: 1px solid var(--line); background: var(--bg-2);
+			mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+		}
+		.ticker-track { display: flex; width: max-content; animation: marquee 38s linear infinite; }
+		.ticker:hover .ticker-track { animation-play-state: paused; }
+		.ticker-item {
+			display: inline-flex; align-items: center; gap: 9px; padding: 15px 26px;
+			font-family: var(--mono); font-size: 12px; color: var(--muted); white-space: nowrap;
+			border-right: 1px solid var(--line);
+		}
+		.ticker-item b { color: var(--ink); font-weight: 500; }
+		.up { color: var(--green); }
+
+		/* ================= SECTIONS ================= */
+		.section { padding: 110px 0; }
+		.sec-head { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 46px; }
+		.sec-label { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; font-family: var(--mono); font-size: 12px; color: var(--accent); }
+		.sec-label::before { content: ""; width: 26px; height: 1px; background: currentColor; }
+		.sec-title {
+			margin: 0; font-family: var(--display); font-weight: 700;
+			font-size: clamp(34px, 4.6vw, 58px); line-height: 1.02; letter-spacing: -0.03em;
+		}
+		.sec-title .dim { color: var(--muted); }
+		.sec-intro { max-width: 340px; margin: 0; font-size: 14px; line-height: 1.7; color: var(--muted); }
+
+		/* Stats */
+		.stats { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); border-radius: 14px; background: var(--card); overflow: hidden; }
+		.stats-head {
+			grid-column: 1 / -1; display: flex; justify-content: space-between; padding: 12px 22px;
+			border-bottom: 1px solid var(--line); background: var(--card-2);
+			font-family: var(--mono); font-size: 11px; color: var(--muted);
+		}
+		.stat { padding: 26px 22px 24px; border-right: 1px solid var(--line); }
+		.stat:last-child { border-right: 0; }
+		.stat-num { display: block; margin-bottom: 6px; font-family: var(--display); font-weight: 700; font-size: clamp(34px, 4vw, 48px); letter-spacing: -0.03em; }
+		.stat-num small { font-size: 0.5em; color: var(--accent); }
+		.stat-label { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+
+		/* T-account skills */
+		.t-account { border: 1px solid var(--line); border-radius: 14px; background: var(--card); overflow: hidden; }
+		.t-title {
+			display: flex; justify-content: space-between; align-items: center; gap: 12px;
+			padding: 16px 24px; border-bottom: 2px solid var(--ink);
+			font-family: var(--mono); font-size: 12px; color: var(--muted);
+		}
+		.t-title strong { font-family: var(--display); font-size: 20px; color: var(--ink); letter-spacing: -0.01em; }
+		.t-cols { display: grid; grid-template-columns: 1fr 1fr; }
+		.t-col { padding: 8px 24px 20px; }
+		.t-col:first-child { border-right: 2px solid var(--ink); }
+		.t-col-head { display: flex; justify-content: space-between; padding: 14px 0 12px; border-bottom: 1px dashed var(--line-2); font-family: var(--mono); font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+		.t-col-head b { color: var(--accent); }
+		.skill-row { padding: 14px 0 12px; border-bottom: 1px dashed var(--line); }
+		.skill-top { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 9px; font-size: 14px; }
+		.skill-top span:last-child { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+		.bar { height: 5px; border-radius: 9px; background: var(--line); overflow: hidden; }
+		.bar i { display: block; height: 100%; width: 0; border-radius: inherit; background: var(--accent); transition: width 1.2s cubic-bezier(.2,.8,.2,1); }
+		.t-account.is-visible .bar i { width: var(--w); }
+		.t-total {
+			display: grid; grid-template-columns: 1fr 1fr; border-top: 2px solid var(--ink);
+			font-family: var(--mono); font-size: 12px;
+		}
+		.t-total div { display: flex; justify-content: space-between; padding: 14px 24px; }
+		.t-total div:first-child { border-right: 2px solid var(--ink); }
+		.balanced { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px; border-top: 1px solid var(--line); background: var(--hl); color: var(--hl-ink); font-family: var(--mono); font-size: 12px; font-weight: 700; }
+
+		/* Projects */
+		.projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+		.project {
+			--x: 50%; --y: 50%;
+			position: relative; display: flex; flex-direction: column; overflow: hidden;
+			border: 1px solid var(--line); border-radius: 16px; background: var(--card);
+			transition: border-color 200ms, transform 300ms cubic-bezier(.2,.8,.2,1);
+		}
+		.project::before {
+			content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0;
+			background: radial-gradient(420px circle at var(--x) var(--y), color-mix(in srgb, var(--hl) 14%, transparent), transparent 60%);
+			transition: opacity 300ms;
+		}
+		.project:hover { border-color: var(--line-2); transform: translateY(-4px); }
+		.project:hover::before { opacity: 1; }
+		.project > * { position: relative; z-index: 1; }
+		.project.feature { grid-column: 1 / -1; display: grid; grid-template-columns: 1.1fr 0.9fr; }
+
+		.p-preview {
+			position: relative; min-height: 230px; margin: 12px 12px 0; padding: 20px;
+			border: 1px solid var(--line); border-radius: 10px; background: var(--bg-2); overflow: hidden;
+			font-family: var(--mono); font-size: 11px; color: var(--muted);
+		}
+		.project.feature .p-preview { margin: 12px 0 12px 12px; min-height: 320px; }
+		.p-body { display: flex; flex: 1; flex-direction: column; padding: 22px 24px 24px; }
+		.p-ref { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 14px; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+		.p-ref b { color: var(--accent); font-weight: 500; }
+		.p-body h3 { margin-bottom: 10px; font-family: var(--display); font-size: 25px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+		.project.feature .p-body h3 { font-size: clamp(28px, 3vw, 38px); }
+		.p-body p { margin-bottom: 18px; font-size: 14px; line-height: 1.7; color: var(--muted); }
+		.tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 20px; }
+		.tag { padding: 5px 10px; border: 1px solid var(--line-2); border-radius: 99px; font-family: var(--mono); font-size: 10.5px; color: var(--muted); }
+		.p-links { display: flex; gap: 18px; margin-top: auto; font-family: var(--mono); font-size: 12px; }
+		.p-links a { display: inline-flex; gap: 6px; border-bottom: 1px solid var(--line-2); padding-bottom: 2px; transition: color 160ms, border-color 160ms; }
+		.p-links a:hover { color: var(--accent); border-color: var(--accent); }
+		.p-impact { display: flex; gap: 22px; margin-bottom: 20px; }
+		.p-impact div { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+		.p-impact strong { display: block; font-family: var(--display); font-size: 26px; color: var(--ink); letter-spacing: -0.02em; }
+
+		/* preview: dashboard */
+		.pv-dash { display: grid; grid-template-rows: auto 1fr; gap: 16px; height: 100%; }
+		.pv-kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+		.pv-kpi { padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); }
+		.pv-kpi b { display: block; margin-top: 4px; font-size: 14px; color: var(--ink); }
+		.pv-kpi .up, .pv-kpi .down { font-size: 10px; }
+		.down { color: var(--red); }
+		.pv-chart { display: flex; align-items: end; gap: 8px; height: 180px; padding-top: 10px; border-bottom: 1px solid var(--line); }
+		.pv-chart i { flex: 1; height: var(--h); border-radius: 4px 4px 0 0; background: var(--line-2); transform-origin: bottom; transition: background 200ms; animation: grow 1s cubic-bezier(.2,.8,.2,1) both; }
+		.pv-chart i:nth-child(odd) { background: color-mix(in srgb, var(--hl) 75%, transparent); }
+		.project:hover .pv-chart i { background: var(--hl); }
+
+		/* preview: recon table */
+		.pv-table { width: 100%; border-collapse: collapse; }
+		.pv-table th { padding: 0 0 8px; border-bottom: 1px solid var(--line-2); font-weight: 500; text-align: left; }
+		.pv-table td { padding: 8px 0; border-bottom: 1px dashed var(--line); color: var(--ink); }
+		.pv-table td:last-child, .pv-table th:last-child { text-align: right; }
+		.ok { color: var(--green) !important; }
+		.warn { color: var(--amber) !important; }
+
+		/* preview: pos receipt */
+		.pv-pos { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; height: 100%; }
+		.pv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; align-content: start; }
+		.pv-grid span { padding: 14px 8px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); text-align: center; color: var(--ink); }
+		.pv-grid span:nth-child(2) { border-color: var(--accent); }
+		.pv-rcpt { padding: 12px; background: var(--ink); color: var(--bg); border-radius: 4px; line-height: 1.8; }
+		.pv-rcpt div { display: flex; justify-content: space-between; }
+		.pv-rcpt hr { border: 0; border-top: 1px dashed currentColor; opacity: .4; margin: 4px 0; }
+
+		/* preview: api */
+		.pv-api { line-height: 1.8; white-space: pre; color: var(--ink); }
+		.pv-api .m { display: inline-block; padding: 1px 6px; margin-right: 6px; border-radius: 4px; background: var(--green); color: var(--hl-ink); font-weight: 700; }
+
+		/* Ledger / riwayat */
+		.ledger { border: 1px solid var(--line); border-radius: 14px; background: var(--card); overflow: hidden; }
+		.ledger-row {
+			display: grid; grid-template-columns: 150px 1fr 110px 120px; gap: 20px; align-items: start;
+			padding: 22px 24px; border-bottom: 1px solid var(--line);
+			transition: background 200ms;
+		}
+		.ledger-row:last-child { border-bottom: 0; }
+		.ledger-row:not(.ledger-head):hover { background: var(--card-2); }
+		.ledger-head { padding-block: 12px; background: var(--card-2); font-family: var(--mono); font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+		.l-date { font-family: var(--mono); font-size: 12px; color: var(--muted); padding-top: 4px; }
+		.l-desc h3 { margin-bottom: 6px; font-family: var(--display); font-size: 21px; font-weight: 700; letter-spacing: -0.01em; }
+		.l-desc p { margin: 0; font-size: 14px; line-height: 1.65; color: var(--muted); }
+		.l-ref { font-family: var(--mono); font-size: 12px; color: var(--accent); padding-top: 4px; }
+		.l-type { justify-self: end; padding: 5px 10px; border-radius: 6px; font-family: var(--mono); font-size: 11px; white-space: nowrap; }
+		.l-type.dev { background: color-mix(in srgb, var(--blue) 16%, transparent); color: var(--blue); }
+		.l-type.acc { background: color-mix(in srgb, var(--amber) 16%, transparent); color: var(--amber); }
+		.l-type.edu { background: color-mix(in srgb, var(--green) 16%, transparent); color: var(--green); }
+
+		/* Contact / invoice */
+		.contact-grid { display: grid; grid-template-columns: 1fr 0.85fr; gap: 60px; align-items: center; }
+		.contact h2 { margin-bottom: 22px; font-family: var(--display); font-weight: 800; font-size: clamp(42px, 6vw, 80px); line-height: 0.98; letter-spacing: -0.04em; }
+		.contact h2 em { font-style: normal; color: var(--accent); }
+		.contact-copy { max-width: 440px; margin-bottom: 30px; font-size: 16px; line-height: 1.7; color: var(--muted); }
+
+		.invoice {
+			position: relative; padding: 30px 28px 38px;
+			background: var(--ink); color: var(--bg);
+			font-family: var(--mono); font-size: 12px; line-height: 1.7;
+			transform: rotate(2deg); box-shadow: var(--shadow);
+			transition: transform 400ms cubic-bezier(.2,.8,.2,1);
+			clip-path: polygon(0 0, 100% 0, 100% 97%, 95% 100%, 90% 97%, 85% 100%, 80% 97%, 75% 100%, 70% 97%, 65% 100%, 60% 97%, 55% 100%, 50% 97%, 45% 100%, 40% 97%, 35% 100%, 30% 97%, 25% 100%, 20% 97%, 15% 100%, 10% 97%, 5% 100%, 0 97%);
+		}
+		.invoice:hover { transform: rotate(0deg) scale(1.01); }
+		.inv-head { display: flex; justify-content: space-between; align-items: start; margin-bottom: 20px; }
+		.inv-head strong { display: block; font-family: var(--display); font-size: 28px; letter-spacing: -0.02em; line-height: 1; }
+		.inv-stamp { padding: 4px 9px; border: 2px solid currentColor; border-radius: 4px; font-weight: 700; transform: rotate(-8deg); opacity: .8; }
+		.inv-row { display: flex; justify-content: space-between; gap: 14px; padding: 6px 0; border-bottom: 1px dashed color-mix(in srgb, var(--bg) 35%, transparent); }
+		.inv-row span:first-child { opacity: .65; }
+		.inv-total { display: flex; justify-content: space-between; margin-top: 14px; padding-top: 12px; border-top: 2px solid var(--bg); font-size: 15px; font-weight: 700; }
+		.barcode { height: 38px; margin-top: 20px; background: repeating-linear-gradient(90deg, var(--bg) 0 2px, transparent 2px 4px, var(--bg) 4px 5px, transparent 5px 8px, var(--bg) 8px 11px, transparent 11px 12px); }
+
+		.footer { display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 80px; border-top: 1px solid var(--line); font-family: var(--mono); font-size: 11px; color: var(--muted); }
+		.socials { display: flex; gap: 20px; }
+		.socials a:hover { color: var(--accent); }
+
+		/* ================= PALETTE ================= */
+		.palette {
+			position: fixed; inset: 0; z-index: 100; display: none; align-items: start; justify-content: center;
+			padding: 14vh 16px 16px; background: rgb(0 0 0 / 45%); backdrop-filter: blur(4px);
+		}
+		.palette.is-open { display: flex; animation: fade 160ms ease; }
+		.palette-box { width: min(560px, 100%); border: 1px solid var(--line-2); border-radius: 14px; background: var(--card); box-shadow: var(--shadow); overflow: hidden; animation: pop 200ms cubic-bezier(.2,.9,.3,1.2); }
+		.palette-input { display: flex; align-items: center; gap: 10px; padding: 0 16px; border-bottom: 1px solid var(--line); }
+		.palette-input span { color: var(--accent); font-family: var(--mono); }
+		.palette-input input { flex: 1; height: 54px; border: 0; outline: 0; background: transparent; color: var(--ink); font-family: var(--mono); font-size: 14px; }
+		.palette-list { max-height: 320px; margin: 0; padding: 8px; overflow-y: auto; list-style: none; }
+		.palette-list button {
+			display: flex; width: 100%; justify-content: space-between; align-items: center; gap: 12px;
+			padding: 11px 12px; border: 0; border-radius: 8px; background: transparent; text-align: left; font-size: 14px;
+		}
+		.palette-list button span { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+		.palette-list button.active { background: var(--hl); color: var(--hl-ink); }
+		.palette-list button.active span { color: var(--hl-ink); }
+		.palette-empty { padding: 14px 12px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+
+		.toast {
+			position: fixed; left: 50%; bottom: 26px; z-index: 120;
+			padding: 11px 16px; border-radius: 10px; background: var(--ink); color: var(--bg);
+			font-family: var(--mono); font-size: 12px; opacity: 0; pointer-events: none;
+			transform: translate(-50%, 16px); transition: opacity 200ms, transform 200ms;
+		}
+		.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+		/* ================= REVEAL & KEYFRAMES ================= */
+		.reveal { opacity: 0; transform: translateY(26px); transition: opacity 700ms ease, transform 700ms cubic-bezier(.2,.7,.2,1); }
+		.reveal.is-visible { opacity: 1; transform: none; }
+		.hero-copy > * { animation: rise 700ms both; }
+		.hero-copy > *:nth-child(2) { animation-delay: 80ms; }
+		.hero-copy > *:nth-child(3) { animation-delay: 160ms; }
+		.hero-copy > *:nth-child(4) { animation-delay: 240ms; }
+		.hero-copy > *:nth-child(5) { animation-delay: 320ms; }
+		.hero-copy > *:nth-child(6) { animation-delay: 400ms; }
+		.hero-visual { animation: rise 900ms 300ms both; }
+
+		@keyframes rise { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+		@keyframes swipe { to { transform: rotate(-1.4deg) scaleX(1); } }
+		@keyframes blink { 50% { opacity: 0; } }
+		@keyframes ping { from { transform: scale(.6); opacity: 1; } to { transform: scale(1.8); opacity: 0; } }
+		@keyframes marquee { to { transform: translateX(-50%); } }
+		@keyframes bob { 0%, 100% { transform: rotate(-4deg) translateY(0); } 50% { transform: rotate(-2deg) translateY(-8px); } }
+		@keyframes spin { to { transform: rotate(360deg); } }
+		@keyframes grow { from { transform: scaleY(0); } }
+		@keyframes fade { from { opacity: 0; } }
+		@keyframes pop { from { opacity: 0; transform: translateY(-8px) scale(.98); } }
+
+		/* ================= RESPONSIVE ================= */
+		@media (max-width: 960px) {
+			.wrap { width: calc(100% - 44px); }
+			.nav-links { gap: 20px; }
+			.hero { grid-template-columns: 1fr; gap: 70px; padding-top: 56px; }
+			.hero-visual { max-width: 560px; margin-left: 20px; }
+			.stats { grid-template-columns: repeat(2, 1fr); }
+			.stat:nth-child(3) { border-right: 0; }
+			.stat:nth-child(n+4) { border-top: 1px solid var(--line); }
+			.project.feature { grid-template-columns: 1fr; }
+			.project.feature .p-preview { margin: 12px 12px 0; min-height: 260px; }
+			.ledger-row { grid-template-columns: 120px 1fr 100px; }
+			.ledger-row .l-ref, .ledger-row .l-ref-h { display: none; }
+			.contact-grid { grid-template-columns: 1fr; gap: 50px; }
+			.invoice { max-width: 440px; }
+		}
+
+		@media (max-width: 720px) {
+			.wrap { width: calc(100% - 32px); }
+			.nav { min-height: 64px; }
+			.menu-toggle { display: inline-flex; }
+			.palette-btn .label { display: none; }
+			.nav-links {
+				position: absolute; top: 64px; left: 16px; right: 16px; display: none; flex-direction: column; gap: 0;
+				padding: 8px 16px; border: 1px solid var(--line-2); border-radius: 12px; background: var(--card); box-shadow: var(--shadow);
+			}
+			.nav-links.is-open { display: flex; }
+			.nav-links a { padding: 14px 0; border-bottom: 1px dashed var(--line); font-size: 13px; }
+			.nav-links a:last-child { border-bottom: 0; }
+			.hero { padding: 40px 0 60px; gap: 64px; }
+			.hero-visual { margin-left: 0; }
+			.term-body { min-height: 260px; padding: 16px 14px 20px; font-size: 11.5px; }
+			.receipt-chip { left: -6px; bottom: -36px; width: 180px; font-size: 10px; }
+			.portrait-frame { right: 0; bottom: -47px; width: 116px; }
+			.sticker { width: 74px; height: 74px; font-size: 8.5px; top: -24px; right: -6px; }
+			.hint { display: none; }
+			.section { padding: 80px 0; }
+			.sec-head { flex-direction: column; align-items: start; gap: 16px; margin-bottom: 32px; }
+			.stats { grid-template-columns: 1fr 1fr; }
+			.stat { padding: 20px 16px; }
+			.t-cols, .t-total { grid-template-columns: 1fr; }
+			.t-col:first-child, .t-total div:first-child { border-right: 0; border-bottom: 2px solid var(--ink); }
+			.t-col { padding-inline: 18px; }
+			.t-total div { padding-inline: 18px; }
+			.projects { grid-template-columns: 1fr; }
+			.p-body { padding: 20px 18px 22px; }
+			.pv-pos { grid-template-columns: 1fr; }
+			.pv-pos .pv-grid { display: none; }
+			.ledger-head { display: none !important; }
+			.ledger-row { grid-template-columns: 1fr auto; gap: 8px 14px; padding: 20px 18px; }
+			.l-date { grid-column: 1; grid-row: 1; }
+			.l-type { grid-column: 2; grid-row: 1; }
+			.l-desc { grid-column: 1 / -1; }
+			.invoice { padding: 26px 20px 34px; transform: rotate(0); }
+			.footer { flex-direction: column; justify-content: center; align-items: start; padding: 22px 0; }
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			html { scroll-behavior: auto; }
+			*, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+			.reveal { opacity: 1; transform: none; }
+			.hl-box::before { transform: rotate(-1.4deg) scaleX(1); }
+		}
+	</style>
+</head>
+<body>
+	<!-- =================================================================
+	     Ganti semua teks "Nama Anda", email, link, angka & proyek
+	     dengan data milikmu sendiri. Cari kata "GANTI" untuk bagian penting.
+	     ================================================================= -->
+
+	<header class="header">
+		<nav class="nav wrap" aria-label="Navigasi utama">
+			<a class="logo" href="#home" aria-label="Beranda">
+				<span class="logo-mark" aria-hidden="true">{N}</span>
+				<span>nama<span class="dim">.anda</span></span>
+			</a>
+			<div class="nav-links" id="nav-links">
+				<a href="#keahlian"><span>01</span>Keahlian</a>
+				<a href="#proyek"><span>02</span>Proyek</a>
+				<a href="#riwayat"><span>03</span>Riwayat</a>
+				<a href="#kontak"><span>04</span>Kontak</a>
+			</div>
+			<div class="nav-tools">
+				<button class="icon-btn palette-btn" type="button" aria-label="Buka navigasi cepat"><span class="label">Cari</span><kbd>Ctrl K</kbd></button>
+				<button class="icon-btn theme-btn" type="button" aria-label="Ganti tema terang/gelap">◐</button>
+				<button class="icon-btn menu-toggle" type="button" aria-label="Buka menu" aria-expanded="false" aria-controls="nav-links">☰</button>
+			</div>
+		</nav>
+	</header>
+
+	<main>
+		<!-- ================= HERO ================= -->
+		<section class="hero wrap" id="home">
+			<div class="hero-copy">
+				<div class="status"><span class="pulse" aria-hidden="true"></span>Tersedia untuk freelance & full-time</div>
+				<p class="hello">// halo, saya <b>Muhammad Istiqlal Fajar Sya'bani</b> 👋</p>
+				<h1>Saya menulis <em>kode</em> yang <span class="hl-box">selalu balance.</span></h1>
+				<p class="role-line" aria-live="polite"><span class="key">role</span>: <span class="val">"<span id="role">Programmer</span>"</span><span class="caret" aria-hidden="true"></span></p>
+				<p class="hero-desc">Programmer dengan latar belakang <strong>akuntansi</strong>. Saya membangun aplikasi web, sistem keuangan, dan otomasi laporan yang tidak cuma jalan, tapi juga <strong>benar secara angka</strong>.</p>
+				<div class="actions">
+					<a class="btn btn-primary" href="#proyek">Lihat proyek <span class="arrow">→</span></a>
+					<a class="btn btn-ghost" href="#" download>Unduh CV <span class="arrow">↓</span></a> <!-- GANTI: link file CV -->
+				</div>
+				<p class="hint">tip: tekan <kbd>Ctrl</kbd> + <kbd>K</kbd> untuk navigasi cepat</p>
+			</div>
+
+			<div class="hero-visual">
+				<div class="sticker" aria-hidden="true">DEBIT<br>=<br>KREDIT</div>
+				<div class="terminal" role="img" aria-label="Potongan kode JavaScript yang mengecek jurnal debit dan kredit seimbang">
+					<div class="term-bar"><i></i><i></i><i></i><span>~/neraca.js</span></div>
+					<pre class="term-body" id="term"></pre>
+				</div>
+				<div class="portrait-frame" aria-label="Foto profil Muhammad Istiqlal Fajar Sya'bani">
+					<img class="portrait-image" src="image/Fajar_ipb_jpg.jpg" alt="Foto Muhammad Istiqlal Fajar Sya'bani" loading="lazy">
+				</div>
+				<div class="receipt-chip" aria-hidden="true">
+					<div class="row"><span>TOTAL DEBIT</span><span>5.000.000</span></div>
+					<div class="row"><span>TOTAL KREDIT</span><span>5.000.000</span></div>
+					<hr>
+					<div class="row"><b>SELISIH</b><b>Rp0 ✓</b></div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ================= TICKER ================= -->
+		<div class="ticker" aria-hidden="true">
+			<div class="ticker-track" id="ticker"></div>
+		</div>
+
+		<!-- ================= STATS ================= -->
+		<section class="section wrap" style="padding-bottom: 0;" aria-label="Ringkasan">
+			<div class="stats reveal">
+				<div class="stats-head"><span>RINGKASAN NERACA</span><span>per <span class="year"></span></span></div>
+				<!-- GANTI: angka sesuai pengalamanmu -->
+				<div class="stat"><span class="stat-num"><span data-count="3">0</span><small>+</small></span><span class="stat-label">tahun ngoding</span></div>
+				<div class="stat"><span class="stat-num"><span data-count="18">0</span></span><span class="stat-label">proyek selesai</span></div>
+				<div class="stat"><span class="stat-num"><span data-count="120">0</span><small>+</small></span><span class="stat-label">laporan direkonsiliasi</span></div>
+				<div class="stat"><span class="stat-num">Rp<span data-count="0">0</span></span><span class="stat-label">selisih tak terjelaskan</span></div>
+			</div>
+		</section>
+
+		<!-- ================= SKILLS (T-ACCOUNT) ================= -->
+		<section class="section wrap" id="keahlian">
+			<div class="sec-head reveal">
+				<div>
+					<p class="sec-label">01 / keahlian</p>
+					<h2 class="sec-title">Dua sisi,<br><span class="dim">satu neraca.</span></h2>
+				</div>
+				<p class="sec-intro">Kode di sisi debit, akuntansi di sisi kredit. Keduanya saling melengkapi, dan selalu seimbang.</p>
+			</div>
+
+			<div class="t-account reveal">
+				<div class="t-title"><strong>Akun: Keahlian</strong><span>No. Akun 1-100</span></div>
+				<div class="t-cols">
+					<div class="t-col">
+						<div class="t-col-head"><span>Debit</span><b>&lt;/&gt; Programming</b></div>
+						<div class="skill-row"><div class="skill-top"><span>JavaScript / TypeScript</span><span>90%</span></div><div class="bar"><i style="--w:90%"></i></div></div>
+						<div class="skill-row"><div class="skill-top"><span>PHP · Laravel</span><span>85%</span></div><div class="bar"><i style="--w:85%"></i></div></div>
+						<div class="skill-row"><div class="skill-top"><span>Python (Pandas, otomasi)</span><span>80%</span></div><div class="bar"><i style="--w:80%"></i></div></div>
+						<div class="skill-row"><div class="skill-top"><span>SQL · MySQL / PostgreSQL</span><span>88%</span></div><div class="bar"><i style="--w:88%"></i></div></div>
+						<div class="skill-row"><div class="skill-top"><span>React / Next.js</span><span>78%</span></div><div class="bar"><i style="--w:78%"></i></div></div>
+						<div class="skill-row"><div class="skill-top"><span>Git · Docker · REST API</span><span>75%</span></div><div class="bar"><i style="--w:75%"></i></div></div>
+					</div>
+					<div class="t-col">
+						<div class="t-col-head"><span>Kredit</span><b>∑ Akuntansi</b></div>
+						<div class="skill-row"><div class="skill-top"><span>Akuntansi Keuangan (PSAK)</span><span>88%</span></div><div class="bar"><i style="--w:88%"></i></div></div>
+						<div class="skill-row"><div class="skill-top"><span>Perpajakan · PPh & PPN</span><span>80%</span></div><div class="bar"><i style="--w:80%"></i></div></div>
+						<div class="skill-row"><div class="skill-top"><span>Rekonsiliasi Bank</span><span>92%</span></div><div class="bar"><i style="--w:92%"></i></div></div>
+						<div class="skill-row"><div class="skill-top"><span>Excel lanjutan · VBA</span><span>90%</span></div><div class="bar"><i style="--w:90%"></i></div></div>
+						<div class="skill-row"><div class="skill-top"><span>Accurate / Jurnal.id</span><span>73%</span></div><div class="bar"><i style="--w:73%"></i></div></div>
+						<div class="skill-row"><div class="skill-top"><span>Analisis Laporan Keuangan</span><span>73%</span></div><div class="bar"><i style="--w:73%"></i></div></div>
+					</div>
+				</div>
+				<div class="t-total"><div><span>TOTAL DEBIT</span><b>496</b></div><div><span>TOTAL KREDIT</span><b>496</b></div></div>
+				<div class="balanced">✓ Debit = Kredit. Neraca seimbang.</div>
+			</div>
+		</section>
+
+		<!-- ================= PROJECTS ================= -->
+		<section class="section wrap" id="proyek" style="padding-top: 0;">
+			<div class="sec-head reveal">
+				<div>
+					<p class="sec-label">02 / jurnal proyek</p>
+					<h2 class="sec-title">Proyek yang<br><span class="dim">sudah diposting.</span></h2>
+				</div>
+				<p class="sec-intro">Setiap proyek dicatat seperti entri jurnal: ada masalah, ada solusi, ada dampak yang bisa diukur.</p>
+			</div>
+
+			<div class="projects">
+				<!-- GANTI: semua proyek di bawah dengan proyekmu -->
+				<article class="project feature reveal">
+					<div class="p-preview" aria-hidden="true">
+						<div class="pv-dash">
+							<div class="pv-kpis">
+								<div class="pv-kpi">Pendapatan<b>Rp 482jt</b><span class="up">▲ 12,4%</span></div>
+								<div class="pv-kpi">Beban<b>Rp 301jt</b><span class="down">▲ 3,1%</span></div>
+								<div class="pv-kpi">Laba bersih<b>Rp 181jt</b><span class="up">▲ 26,8%</span></div>
+							</div>
+							<div class="pv-chart">
+								<i style="--h:38%"></i><i style="--h:52%;animation-delay:.05s"></i><i style="--h:45%;animation-delay:.1s"></i><i style="--h:64%;animation-delay:.15s"></i><i style="--h:58%;animation-delay:.2s"></i><i style="--h:72%;animation-delay:.25s"></i><i style="--h:66%;animation-delay:.3s"></i><i style="--h:84%;animation-delay:.35s"></i><i style="--h:78%;animation-delay:.4s"></i><i style="--h:95%;animation-delay:.45s"></i>
+							</div>
+						</div>
+					</div>
+					<div class="p-body">
+						<div class="p-ref"><span><b>JRN-001</b> · Unggulan</span><span>2025</span></div>
+						<h3>Lapkeu — Dashboard laporan keuangan otomatis</h3>
+						<p>Aplikasi web yang menarik data transaksi, menyusun jurnal, lalu menghasilkan neraca, laba rugi, dan arus kas secara real-time. Dibuat untuk UMKM yang selama ini rekap manual di Excel.</p>
+						<div class="p-impact">
+							<div><strong>−80%</strong>waktu tutup buku</div>
+							<div><strong>3</strong>laporan otomatis</div>
+						</div>
+						<div class="tags"><span class="tag">Laravel</span><span class="tag">React</span><span class="tag">PostgreSQL</span><span class="tag">Chart.js</span></div>
+						<div class="p-links"><a href="#">Demo ↗</a><a href="#">Kode ↗</a></div>
+					</div>
+				</article>
+
+				<article class="project reveal">
+					<div class="p-preview" aria-hidden="true">
+						<table class="pv-table">
+							<thead><tr><th>Tanggal</th><th>Keterangan</th><th>Status</th></tr></thead>
+							<tbody>
+								<tr><td>02/10</td><td>Transfer masuk</td><td class="ok">✓ cocok</td></tr>
+								<tr><td>03/10</td><td>Biaya admin</td><td class="ok">✓ cocok</td></tr>
+								<tr><td>05/10</td><td>Pembayaran vendor</td><td class="warn">! cek</td></tr>
+								<tr><td>07/10</td><td>Setoran tunai</td><td class="ok">✓ cocok</td></tr>
+								<tr><td>09/10</td><td>Bunga bank</td><td class="ok">✓ cocok</td></tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="p-body">
+						<div class="p-ref"><span><b>JRN-002</b> · Otomasi</span><span>2025</span></div>
+						<h3>Rekon — Rekonsiliasi bank otomatis</h3>
+						<p>Script yang mencocokkan mutasi rekening dengan buku besar, lalu menandai transaksi yang selisih. Pekerjaan berjam-jam jadi hitungan menit.</p>
+						<div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">OpenPyXL</span></div>
+						<div class="p-links"><a href="#">Kode ↗</a><a href="#">Studi kasus ↗</a></div>
+					</div>
+				</article>
+
+				<article class="project reveal">
+					<div class="p-preview" aria-hidden="true">
+						<div class="pv-pos">
+							<div class="pv-grid"><span>Kopi</span><span>Roti</span><span>Teh</span><span>Mie</span><span>Air</span><span>Snack</span></div>
+							<div class="pv-rcpt">
+								<div><span>Kopi x2</span><span>36.000</span></div>
+								<div><span>Roti x1</span><span>15.000</span></div>
+								<hr>
+								<div><span>PPN 11%</span><span>5.610</span></div>
+								<div><b>TOTAL</b><b>56.610</b></div>
+							</div>
+						</div>
+					</div>
+					<div class="p-body">
+						<div class="p-ref"><span><b>JRN-003</b> · Aplikasi</span><span>2024</span></div>
+						<h3>Kasirku — POS untuk UMKM</h3>
+						<p>Aplikasi kasir dengan stok, PPN otomatis, dan jurnal penjualan yang langsung terposting ke buku besar.</p>
+						<div class="tags"><span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">MySQL</span></div>
+						<div class="p-links"><a href="#">Demo ↗</a><a href="#">Kode ↗</a></div>
+					</div>
+				</article>
+
+				<article class="project reveal">
+					<div class="p-preview" aria-hidden="true">
+<div class="pv-api"><span class="m">POST</span>/api/pajak/pph21
+
+{
+  <span class="c-str">"gaji_bruto"</span>: <span class="c-num">12000000</span>,
+  <span class="c-str">"status"</span>: <span class="c-str">"K/1"</span>
+}
+
+<span class="c-mut">→ 200 OK</span>
+{ <span class="c-str">"pph21"</span>: <span class="c-num">270000</span>, <span class="c-str">"tarif"</span>: <span class="c-str">"TER B"</span> }</div>
+					</div>
+					<div class="p-body">
+						<div class="p-ref"><span><b>JRN-004</b> · API</span><span>2024</span></div>
+						<h3>TaxKit — API kalkulator pajak</h3>
+						<p>REST API untuk menghitung PPh 21 dan PPN, lengkap dengan dokumentasi dan unit test agar perhitungannya bisa dipercaya.</p>
+						<div class="tags"><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">Jest</span></div>
+						<div class="p-links"><a href="#">Docs ↗</a><a href="#">Kode ↗</a></div>
+					</div>
+				</article>
+			</div>
+		</section>
+
+		<!-- ================= LEDGER / RIWAYAT ================= -->
+		<section class="section wrap" id="riwayat" style="padding-top: 0;">
+			<div class="sec-head reveal">
+				<div>
+					<p class="sec-label">03 / buku besar</p>
+					<h2 class="sec-title">Riwayat<br><span class="dim">perjalanan.</span></h2>
+				</div>
+				<p class="sec-intro">Dicatat kronologis, dari yang terbaru. Tanpa entri yang disembunyikan.</p>
+			</div>
+
+			<!-- GANTI: riwayat kerja & pendidikanmu -->
+			<div class="ledger reveal">
+				<div class="ledger-row ledger-head"><span>Tanggal</span><span>Keterangan</span><span class="l-ref-h">Ref</span><span style="justify-self:end">Akun</span></div>
+				<div class="ledger-row">
+					<span class="l-date">2025 — kini</span>
+					<div class="l-desc"><h3>Fullstack Developer · PT Contoh Teknologi</h3><p>Membangun modul keuangan internal: invoicing, piutang, dan laporan bulanan untuk tim finance.</p></div>
+					<span class="l-ref">GL-04</span>
+					<span class="l-type dev">Programming</span>
+				</div>
+				<div class="ledger-row">
+					<span class="l-date">2023 — 2025</span>
+					<div class="l-desc"><h3>Staf Akuntansi · CV Contoh Makmur</h3><p>Menyusun jurnal harian, rekonsiliasi bank, dan pelaporan pajak bulanan. Di sini mulai otomasi pakai Excel VBA & Python.</p></div>
+					<span class="l-ref">GL-03</span>
+					<span class="l-type acc">Akuntansi</span>
+				</div>
+				<div class="ledger-row">
+					<span class="l-date">2022 — 2023</span>
+					<div class="l-desc"><h3>Freelance Web Developer</h3><p>Membuat website dan aplikasi kasir sederhana untuk beberapa UMKM lokal.</p></div>
+					<span class="l-ref">GL-02</span>
+					<span class="l-type dev">Programming</span>
+				</div>
+				<div class="ledger-row">
+					<span class="l-date">2019 — 2023</span>
+					<div class="l-desc"><h3>S1 Akuntansi · Universitas Contoh</h3><p>Fokus pada Sistem Informasi Akuntansi. Skripsi tentang otomasi pencatatan transaksi UMKM.</p></div>
+					<span class="l-ref">GL-01</span>
+					<span class="l-type edu">Pendidikan</span>
+				</div>
+			</div>
+		</section>
+
+		<!-- ================= CONTACT ================= -->
+		<section class="section contact wrap" id="kontak" style="padding-top: 20px;">
+			<div class="contact-grid">
+				<div class="reveal">
+					<p class="sec-label">04 / kontak</p>
+					<h2>Punya proyek?<br>Mari kita <em>posting.</em></h2>
+					<p class="contact-copy">Butuh aplikasi, sistem keuangan, atau otomasi laporan? Ceritakan sedikit tentang kebutuhanmu, biasanya saya balas dalam 1×24 jam.</p>
+					<div class="actions">
+						<a class="btn btn-primary" href="mailto:ikuraru0824@gmail.com">Kirim email <span class="arrow">→</span></a>
+						<button class="btn btn-ghost copy-email" type="button" data-email="ikuraru0824@gmail.com">Salin email ⧉</button>
+					</div>
+				</div>
+
+				<div class="invoice reveal" aria-label="Invoice ajakan kolaborasi">
+					<div class="inv-head">
+						<div><span style="opacity:.6">INVOICE</span><strong>#<span class="year"></span>-001</strong></div>
+						<span class="inv-stamp">OPEN</span>
+					</div>
+					<div class="inv-row"><span>Dari</span><span>Muhammad Istiqlal Fajar Sya'bani</span></div>
+					<div class="inv-row"><span>Kepada</span><span>Kamu 👋</span></div>
+					<div class="inv-row"><span>Item</span><span>Proyek berikutnya</span></div>
+					<div class="inv-row"><span>Qty</span><span>1</span></div>
+					<div class="inv-row"><span>Harga</span><span>Mari diskusikan</span></div>
+					<div class="inv-total"><span>TOTAL</span><span>Kolaborasi ✓</span></div>
+					<div class="barcode" aria-hidden="true"></div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer class="footer wrap">
+		<span>© <span class="year"></span> Muhammad Istiqlal Fajar Sya'bani · dibangun dengan HTML, CSS & JS murni</span>
+		<div class="socials">
+			<a href="https://github.com/beliviu" target="_blank" rel="noreferrer">GitHub</a>
+			<a href="https://www.linkedin.com/in/muhammad-istiqlal-fajar-sya-bani-5a3887335" target="_blank" rel="noreferrer">LinkedIn</a>
+			<a href="https://www.instagram.com/islfajaar_/" target="_blank" rel="noreferrer">Instagram</a>
+		</div>
+	</footer>
+
+	<!-- Command palette -->
+	<div class="palette" id="palette" role="dialog" aria-modal="true" aria-label="Navigasi cepat">
+		<div class="palette-box">
+			<div class="palette-input"><span>&gt;</span><input id="palette-input" type="text" placeholder="Ketik perintah atau bagian…" autocomplete="off" aria-label="Cari"></div>
+			<ul class="palette-list" id="palette-list"></ul>
+		</div>
+	</div>
+
+	<div class="toast" id="toast" role="status"></div>
+
+	<script>
+		const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+		const $ = (s, el = document) => el.querySelector(s);
+		const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+
+		/* ---------- Tahun ---------- */
+		$$(".year").forEach((el) => (el.textContent = new Date().getFullYear()));
+
+		/* ---------- Tema ---------- */
+		const root = document.documentElement;
+		try {
+			const saved = localStorage.getItem("theme");
+			if (saved) root.dataset.theme = saved;
+		} catch (e) {}
+		function toggleTheme() {
+			root.dataset.theme = root.dataset.theme === "light" ? "dark" : "light";
+			try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
+		}
+		$(".theme-btn").addEventListener("click", toggleTheme);
+
+		/* ---------- Menu mobile ---------- */
+		const menuBtn = $(".menu-toggle");
+		const navLinks = $("#nav-links");
+		function setMenu(open) {
+			navLinks.classList.toggle("is-open", open);
+			menuBtn.setAttribute("aria-expanded", String(open));
+			menuBtn.textContent = open ? "✕" : "☰";
+		}
+		menuBtn.addEventListener("click", () => setMenu(!navLinks.classList.contains("is-open")));
+		navLinks.addEventListener("click", (e) => { if (e.target.closest("a")) setMenu(false); });
+
+		/* ---------- Toast ---------- */
+		const toast = $("#toast");
+		let toastTimer;
+		function showToast(msg) {
+			toast.textContent = msg;
+			toast.classList.add("show");
+			clearTimeout(toastTimer);
+			toastTimer = setTimeout(() => toast.classList.remove("show"), 2000);
+		}
+
+		/* ---------- Salin email ---------- */
+		function copyEmail() {
+			const email = $(".copy-email").dataset.email;
+			if (navigator.clipboard) {
+				navigator.clipboard.writeText(email).then(() => showToast("✓ Email disalin: " + email), () => showToast(email));
+			} else {
+				showToast(email);
+			}
+		}
+		$(".copy-email").addEventListener("click", copyEmail);
+
+		/* ---------- Role berganti ---------- */
+		const roles = ["Programmer", "Accountant", "Fullstack Developer", "Programmer yang paham neraca"];
+		const roleEl = $("#role");
+		if (!reduceMotion) {
+			let r = 0, i = roles[0].length, deleting = true;
+			function tickRole() {
+				const word = roles[r];
+				if (deleting) {
+					i--;
+					if (i <= 0) { deleting = false; r = (r + 1) % roles.length; }
+				} else {
+					i++;
+					if (i >= roles[r].length) { deleting = true; roleEl.textContent = roles[r]; return setTimeout(tickRole, 1800); }
+				}
+				roleEl.textContent = roles[r].slice(0, i) || "";
+				setTimeout(tickRole, deleting ? 40 : 75);
+			}
+			setTimeout(tickRole, 2200);
+		}
+
+		/* ---------- Terminal mengetik ---------- */
+		const portraitImage = document.querySelector(".portrait-image");
+		const showPortrait = () => portraitImage.closest(".portrait-frame").classList.add("has-image");
+		if (portraitImage.complete && portraitImage.naturalWidth > 0) showPortrait();
+		else portraitImage.addEventListener("load", showPortrait, { once: true });
+
+		const termLines = [
+			'<span class="c-mut">$ node neraca.js</span>',
+			'',
+			'<span class="c-key">const</span> jurnal = [',
+			'  { akun: <span class="c-str">"Kas"</span>, debit: <span class="c-num">5_000_000</span> },',
+			'  { akun: <span class="c-str">"Pendapatan"</span>, kredit: <span class="c-num">5_000_000</span> },',
+			'];',
+			'',
+			'<span class="c-key">const</span> <span class="c-fn">total</span> = (k) =&gt; jurnal',
+			'  .<span class="c-fn">reduce</span>((s, j) =&gt; s + (j[k] ?? <span class="c-num">0</span>), <span class="c-num">0</span>);',
+			'',
+			'<span class="c-fn">console</span>.<span class="c-fn">log</span>(<span class="c-fn">total</span>(<span class="c-str">"debit"</span>) === <span class="c-fn">total</span>(<span class="c-str">"kredit"</span>));',
+			'<span class="c-ok">✓ true — seimbang, siap deploy 🚀</span>'
+		];
+		const term = $("#term");
+		const toText = (html) => { const d = document.createElement("div"); d.innerHTML = html; return d.textContent; };
+
+		function makeLine(n) {
+			const span = document.createElement("span");
+			span.className = "ln";
+			span.dataset.n = n;
+			term.appendChild(span);
+			return span;
+		}
+
+		if (reduceMotion) {
+			termLines.forEach((html, idx) => (makeLine(idx + 1).innerHTML = html || " "));
+		} else {
+			let li = 0;
+			function typeLine() {
+				if (li >= termLines.length) return;
+				const html = termLines[li];
+				const text = toText(html);
+				const el = makeLine(li + 1);
+				let c = 0;
+				(function step() {
+					if (c <= text.length) {
+						el.textContent = text.slice(0, c) || " ";
+						c += 2;
+						setTimeout(step, 16);
+					} else {
+						el.innerHTML = html || " ";
+						li++;
+						setTimeout(typeLine, li === termLines.length - 1 ? 500 : 90);
+					}
+				})();
+			}
+			setTimeout(typeLine, 900);
+		}
+
+		/* ---------- Ticker ---------- */
+		const tickerData = [
+			["LARAVEL", "+12,4%"], ["PSAK", "+8,1%"], ["PYTHON", "+15,2%"], ["SQL", "+9,7%"], ["REACT", "+11,3%"],
+			["PPh 21", "+6,5%"], ["EXCEL VBA", "+7,8%"], ["REKONSILIASI", "+10,0%"], ["TYPESCRIPT", "+13,6%"], ["ACCURATE", "+5,4%"]
+		];
+		const tickerHTML = tickerData.map(([n, v]) => `<span class="ticker-item"><b>${n}</b><span class="up">▲ ${v}</span></span>`).join("");
+		$("#ticker").innerHTML = tickerHTML + tickerHTML;
+
+		/* ---------- Reveal + count up ---------- */
+		function countUp(el) {
+			const target = Number(el.dataset.count);
+			if (reduceMotion || target === 0) { el.textContent = target; return; }
+			const start = performance.now(), dur = 1400;
+			(function frame(now) {
+				const p = Math.min((now - start) / dur, 1);
+				el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+				if (p < 1) requestAnimationFrame(frame);
+			})(start);
+		}
+
+		if ("IntersectionObserver" in window) {
+			const io = new IntersectionObserver((entries, obs) => {
+				entries.forEach((entry) => {
+					if (!entry.isIntersecting) return;
+					entry.target.classList.add("is-visible");
+					$$("[data-count]", entry.target).forEach(countUp);
+					obs.unobserve(entry.target);
+				});
+			}, { threshold: 0.15 });
+			$$(".reveal").forEach((el) => io.observe(el));
+		} else {
+			$$(".reveal").forEach((el) => { el.classList.add("is-visible"); $$("[data-count]", el).forEach(countUp); });
+		}
+
+		/* ---------- Spotlight kartu proyek ---------- */
+		$$(".project").forEach((card) => {
+			card.addEventListener("pointermove", (e) => {
+				const r = card.getBoundingClientRect();
+				card.style.setProperty("--x", e.clientX - r.left + "px");
+				card.style.setProperty("--y", e.clientY - r.top + "px");
+			});
+		});
+
+		/* ---------- Command palette ---------- */
+		const palette = $("#palette");
+		const pInput = $("#palette-input");
+		const pList = $("#palette-list");
+		const go = (sel) => () => document.querySelector(sel).scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
+		const commands = [
+			{ label: "Ke Beranda", hint: "#home", run: go("#home") },
+			{ label: "Lihat Keahlian", hint: "#keahlian", run: go("#keahlian") },
+			{ label: "Lihat Proyek", hint: "#proyek", run: go("#proyek") },
+			{ label: "Lihat Riwayat", hint: "#riwayat", run: go("#riwayat") },
+			{ label: "Hubungi saya", hint: "#kontak", run: go("#kontak") },
+			{ label: "Salin email", hint: "clipboard", run: copyEmail },
+			{ label: "Ganti tema terang / gelap", hint: "tema", run: toggleTheme },
+			{ label: "Buka GitHub", hint: "↗", run: () => window.open("https://github.com/beliviu", "_blank", "noopener") }
+		];
+		let filtered = commands, active = 0, lastFocus = null;
+
+		function renderPalette() {
+			const q = pInput.value.trim().toLowerCase();
+			filtered = commands.filter((c) => (c.label + " " + c.hint).toLowerCase().includes(q));
+			if (active >= filtered.length) active = 0;
+			pList.innerHTML = filtered.length
+				? filtered.map((c, i) => `<li><button type="button" data-i="${i}" class="${i === active ? "active" : ""}">${c.label}<span>${c.hint}</span></button></li>`).join("")
+				: '<li class="palette-empty">Tidak ditemukan. Coba "proyek" atau "kontak".</li>';
+		}
+		function openPalette() {
+			lastFocus = document.activeElement;
+			palette.classList.add("is-open");
+			pInput.value = ""; active = 0; renderPalette();
+			setTimeout(() => pInput.focus(), 10);
+		}
+		function closePalette() {
+			palette.classList.remove("is-open");
+			if (lastFocus) lastFocus.focus();
+		}
+		function runActive(i = active) {
+			const cmd = filtered[i];
+			if (!cmd) return;
+			closePalette();
+			cmd.run();
+		}
+
+		$(".palette-btn").addEventListener("click", openPalette);
+		pInput.addEventListener("input", () => { active = 0; renderPalette(); });
+		pList.addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) runActive(Number(b.dataset.i)); });
+		pList.addEventListener("mousemove", (e) => {
+			const b = e.target.closest("button");
+			if (b && Number(b.dataset.i) !== active) { active = Number(b.dataset.i); renderPalette(); }
+		});
+		palette.addEventListener("click", (e) => { if (e.target === palette) closePalette(); });
+
+		document.addEventListener("keydown", (e) => {
+			const isOpen = palette.classList.contains("is-open");
+			const typing = /input|textarea/i.test(document.activeElement.tagName);
+			if ((e.key.toLowerCase() === "k" && (e.ctrlKey || e.metaKey)) || (e.key === "/" && !typing && !isOpen)) {
+				e.preventDefault();
+				isOpen ? closePalette() : openPalette();
+				return;
+			}
+			if (!isOpen) return;
+			if (e.key === "Escape") closePalette();
+			else if (e.key === "ArrowDown") { e.preventDefault(); active = (active + 1) % Math.max(filtered.length, 1); renderPalette(); }
+			else if (e.key === "ArrowUp") { e.preventDefault(); active = (active - 1 + filtered.length) % Math.max(filtered.length, 1); renderPalette(); }
+			else if (e.key === "Enter") { e.preventDefault(); runActive(); }
+		});
+	</script>
+</body>
+</html>

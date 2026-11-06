@@ -1,0 +1,18 @@
+@keyframes ping {
+  from { opacity: 1; transform: scale(.6); }
+  to { opacity: 0; transform: scale(1.8); }
+}
+@keyframes swipe { to { transform: rotate(-1.4deg) scaleX(1); } }
+@keyframes blink { 50% { opacity: 0; } }
+@keyframes ticker-scroll { to { transform: translateX(-50%); } }
+@keyframes chart-grow { from { transform: scaleY(.1); } to { transform: scaleY(1); } }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+  .hl-box::before { transform: rotate(-1.4deg) scaleX(1); }
+  .ticker-track { animation: none; }
+}
